@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>МашАлина</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+    <form action="">
+        <label>Тема:</label>
+        <input type="text" id="theme"><br>
+        <label>Текст:</label><br>
+        <textarea id="comment" cols="30" rows="10"></textarea>
+        <input type="button" id="add_comment" value="Добавить">
+    </form>
+    <div class="message">
+        <h2>Тема</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, saepe. Dicta fugit provident iste ullam
+            voluptatibus blanditiis delectus aliquid incidunt pariatur, at, impedit, ipsa beatae. Eum sint deleniti
+            assumenda ullam.</p>
+        <input type="button" value="[x]" id="btn_remove">
+    </div>
+    <script>
+        function handler() {
+            function btn_remover() {
+                parent = this.parentElement;
+               parent.remove();
+            }
+            let theme = document.getElementById('theme');
+            let comment = document.getElementById('comment');
+            let nm = document.createElement('div');
+            nm.classList.add('message');
+            let str = '<h3>' + theme.value + '</h3><p>' +
+                comment.value + '</p>';
+            nm.innerHTML = str;
+
+            theme.value = "";
+            comment.value = "";
+
+            //Создадим кнопку
+
+            let btn = document.createElement('input');
+            btn.type = 'button';
+            btn.id = 'btn_remove';
+            btn.value = '[x]';
+            btn.onclick = btn_remover;
+            nm.append(btn);
+            document.body.append(nm);
+
+        }
+        add_comment.addEventListener("click", handler);
+    </script>
+</body>
+
+</html>
